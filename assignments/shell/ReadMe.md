@@ -8,32 +8,31 @@
 |   1      |   ls      |                       
 |   2      |   ls -l         |                 
 |   3      |    mkdir      |    
-|   4      |   ls      |                       
-|   5      |   ls -l         |                
-|   6      |    mkdir      |                   
-|   7      |   mkdir(directory, ~, ..)      |  
-|   8      |  pwd        |                     
-|   9      |    cp      |                      
-|   10      |   mv      |                       
-|   11     |  rm        |
-|   12     |    rmdir      |
-|   13     |   cat      |
-|   14     |   less        |
-|   15      |    head      |
-|   16     |   tail      |
-|   17     |   grep         |
-|   18     |    wc     |
-|   19     |  command1 | command2  |
-|   20     |  cat file1 file2 > file0     |
-|   21      |   cmnd < file      |
-|   22      |   sort    |
-|   23      |  cmnd >> file     |
-|   24      |   who     |
-|   25     |  cmd1 | cmd2        |
-|   26     |  ls -lah       |
-|   27     |  history        |
-|   28     |   ls -a        |
-|   29      |   chmod        |
+|   4      |   ls      |                                   
+|   5     |    mkdir      |                   
+|   6      |   mkdir(directory, ~, ..)      |  
+|   7      |  pwd        |                     
+|   8      |    cp      |                      
+|   9      |   mv      |                       
+|   10     |  rm        |
+|   11     |    rmdir      |
+|   12     |   cat      |
+|   13     |   less        |
+|   14      |    head      |
+|   15     |   tail      |
+|   16     |   grep         |
+|   17     |    wc     |
+|   18     |  command1 | command2  |
+|   19     |  cat file1 file2 > file0     |
+|   20      |   cmnd < file      |
+|   21      |   sort    |
+|   22     |  cmnd >> file     |
+|   23     |   who     |
+|   24     |  cmd1 | cmd2        |
+|   25     |  ls -lah       |
+|   26     |  history        |
+|   27     |   ls -a        |
+|   28    |   chmod        |
 
 
 
