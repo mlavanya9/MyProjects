@@ -1,12 +1,8 @@
 /* MAKE A DEAL 
   
-   LAVANYA MENGARABOINA   
+  author: LAVANYA  */  
    
 
-/* In this project Make a Deal, we have three doors out of which we can select a door, other door is
-selected by the contest organiser: Monty. Two out of three doors have goat behind them, and one has a
-car behind it.We can now reveal the selected door or switch the door with the remaining door and then 
-reveal that.  So, we can see our luck of getting a car as many times as possible!!! This is done in C#.*/
 
 using System;
 using System.Collections.Generic;
