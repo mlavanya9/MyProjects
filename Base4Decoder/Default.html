@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Base4 Encoding & Decoding</title>
+	<style type="text/css">
+
+		/* Layout */
+		body {
+			min-width: 630px;
+		}
+
+		#container {
+			padding-left: 200px;
+			padding-right: 300px;
+			height: auto;
+		}
+		
+		#container .column {
+			position: relative;
+			float: left;
+		}
+		
+		#center {
+			padding: 10px 20px;
+			width: 100%;
+		}
+		
+		#left {
+			width: 180px;
+			padding: 0 10px;
+			right: 240px;
+			margin-left: -100%;
+		}
+		
+		#right {
+			width: 300px;
+			padding: 0 10px;
+			margin-right: -100%;
+		}
+		
+		#footer {
+			clear: both;
+		}
+		
+		#float_bottom {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		}
+		
+		/* IE hack */
+		* html #left {
+			left: 150px;
+		}
+
+		/* Make the columns the same height as each other */
+		#container {
+			overflow: hidden;
+		}
+
+		#container .column {
+			padding-bottom: 1001em;
+			margin-bottom: -1000em;
+		}
+
+		/* Fix for the footer */
+		* html body {
+			overflow: hidden;
+		}
+		
+		* html #footer-wrapper {
+			float: left;
+			position: relative;
+			width: 100%;
+			padding-bottom: 10010px;
+			margin-bottom: -10000px;
+			background: #fff;
+		}
+
+		/* Aesthetics */
+		body {
+			margin: 0;
+			padding: 0;
+			font-family:Sans-serif;
+			line-height: 1.5em;
+		}
+		
+		p {
+			color: #555;
+		}
+
+		nav ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+		
+		nav ul a {
+			color: darkgreen;
+			text-decoration: none;
+		}
+
+		#header, #footer {
+			font-size: large;
+			padding: 0.3em;
+			background: #BCCE98;
+		}
+
+		#left {
+			background: #DAE9BC;
+		}
+		
+		#right {
+		    width:300px;
+			background: #F7FDEB;
+		}
+
+		#center {
+			background: #fff;
+		}
+
+		#container .column {
+			padding-top: 1em;
+		}
+		
+		#rcorners1 {
+			border-radius: 25px;
+			background: #bbff99;
+			padding: 10px;
+			width: 200px;
+			text-align: center;
+		}
+		p.wrapTest {
+			width: auto;
+			word-wrap: break-word;
+		}
+	</style>
+</head>
+<body>
+	<header id="header"><h3>Base4 Encoding and Decoding</h3></header>
+	<div id="container">
+
+		<main id="center" class="column">
+		<form action="">
+		
+		<div style="width: 50%;height: 800px; float:left">
+		Enter text you want to Encode:<br> <input type="text" id="txt2" onkeyup="encodeString(this.value)">
+		
+		<p>encoded result: <p id="encodedResult" class="wrapTest"></p></p>
+		<p id="rcorners1" style="margin-top:250px;" onclick="copyToDecode()">click to Decode</p>
+		</div>
+
+		<div style="width: 50%; float:right">
+		Enter encoded text to Decode:<br> <input type="text" id="txt3" onkeyup="decodeString(this.value)">
+		
+		<p>decoded result: <p id="decodedResult" class="wrapTest"></p></p>
+		</div>
+		
+		</form>						
+		</main>
+
+		<nav id="left" class="column">
+			<h3>Encoding</h3>
+			<p>
+			In computers, encoding is the process of putting a sequence of characters 
+			(letters, numbers, punctuation, and certain symbols) into a specialized 
+			format for efficient transmission or storage.
+			</p>
+			<h3>Decoding</h3>
+			<p>Decoding is the opposite process -- the conversion of an encoded 
+			format back into the original sequence of characters.
+			</p>
+		</nav>
+
+		<div id="right" class="column">
+			<h3>bibliography</h3>
+			<a href="https://en.wikipedia.org/wiki/Base64">Base64 wikipedia</a><br>
+			<a href="https://en.wikibooks.org/wiki/Algorithm_Implementation/Miscellaneous/Base64">Base 64 Algorithm</a><br>
+			<a href="http://www.w3schools.com/php/">W3Schools PHP tutorials</a><br>
+			<a href="http://php.net/manual/en/index.php">PHP Manual</a>
+		</div>
+
+	</div>
+
+	<div id="footer-wrapper">
+		<footer id="footer"><p>copyright @lavanyaMengaraboina</p></footer>
+	</div>
+<script>
+
+function encodeString(str){
+if (str.length == 0) {
+    document.getElementById("encodedResult").innerHTML = "";
+    return;
+    }else{
+   var inputArray = str.split("");
+   var newArray = [];
+   for (i = 0; i < inputArray.length; i++) 
+	{
+    newArray[i] = convertChar(inputArray[i]);	
+    } 
+   var bitCode = newArray.toString().replace(/\,/g,"");
+   var splitStringResult = stringSplitToTwo(bitCode);
+   for(i = 0; i < splitStringResult.length;i++)
+    {
+       if(splitStringResult[i] == 00){
+	   splitStringResult[i] = "A";
+	   }
+	   if(splitStringResult[i] == 01){
+	   splitStringResult[i] = "B";
+	   }
+	   if(splitStringResult[i] == 10){
+	   splitStringResult[i] = "C";
+	   }
+	   if(splitStringResult[i] == 11){
+	   splitStringResult[i] = "D";
+	   }
+    }
+	var encodedResultString = splitStringResult.toString().replace(/\,/g,"");
+	document.getElementById("encodedResult").innerHTML = encodedResultString;
+   }
+}
+
+function convertChar(charecter){
+
+   var binValue = (charecter.charCodeAt(0) >>> 0).toString(2);
+   var paddingResult = pad(binValue,8);
+   return paddingResult;
+}
+
+function pad(n, width, z) {
+  z = z || '0';
+  n = n + '';
+  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+}
+
+function stringSplitToTwo( s ){
+    var i = s.length % 2;
+    var parts = i ? [ s.substr( 0, i ) ] : [];
+    for( ; i < s.length ; i += 2 )
+    {
+        parts.push( s.substr( i, 2 ) );
+    }
+    return parts;
+}
+
+function decodeString(str) {
+  var xhttp;
+  if (str.length == 0) {
+    document.getElementById("decodedResult").innerHTML = "";
+    return;
+  }
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      document.getElementById("decodedResult").innerHTML = xhttp.responseText;
+    }
+  };
+  xhttp.open("GET", "decodeFunction.php?q="+str, true);
+  xhttp.send();
+}
+
+function copyToDecode(){
+  var temp = document.getElementById("encodedResult").innerHTML;
+  decodeString(temp);
+}
+</script>
+
+</body>
+</html>
