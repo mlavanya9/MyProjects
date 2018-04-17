@@ -2,10 +2,13 @@
 properties([pipelineTriggers([githubPush()])])
 pipeline {
 	agent any
+	
+	
 	stages {
 		stage('Build') {
 			steps {
 				echo 'Building'
+				echo 'This is sravani build'
 			}
 		}
 		stage('Test') {
