@@ -14,5 +14,14 @@ pipeline {
 				sh 'ls'
 			}
 		}
+		
+		stage('prep') {
+			steps {
+				echo 'testing'
+				sh 'pwd'
+				sh 'ls'
+			}
+		}
+		
 	}
 }
