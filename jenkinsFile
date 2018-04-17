@@ -4,6 +4,8 @@ pipeline {
 	agent any
 	
 	
+	
+	
 	stages {
 		stage('Build') {
 			steps {
@@ -24,6 +26,7 @@ pipeline {
 				echo 'testing'
 				sh 'pwd'
 				sh 'ls'
+				echo 'Updated build info'
 			}
 		}
 		
